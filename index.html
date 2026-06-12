@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Golden Lounge Bar | Torino</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#050507;
+  color:#fff;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+:root{
+  --gold:#d4af37;
+  --dark:#050507;
+  --navy:#07142b;
+  --card:#0d1020;
+  --white:#fff;
+}
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:9999;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(212,175,55,.25);
+}
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  color:var(--gold);
+  font-weight:900;
+  font-size:22px;
+  letter-spacing:1px;
+}
+nav a{
+  margin-left:18px;
+  color:white;
+  font-size:14px;
+  opacity:.9;
+}
+nav a:hover{color:var(--gold)}
+
+.hero{
+  min-height:100vh;
+  padding:140px 20px 80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.95)),
+    url("images/photo1.jpg") center/cover no-repeat;
+}
+.hero-box{
+  max-width:900px;
+  animation:fadeUp 1s ease;
+}
+.hero h1{
+  font-size:clamp(55px,12vw,120px);
+  color:var(--gold);
+  text-transform:uppercase;
+  line-height:.9;
+  letter-spacing:3px;
+}
+.hero h2{
+  font-size:clamp(28px,6vw,65px);
+  margin:12px 0;
+}
+.hero p{
+  font-size:clamp(18px,4vw,28px);
+  margin:18px 0;
+}
+.hero .small{
+  color:#ddd;
+  font-size:18px;
+}
+.btns{
+  margin-top:28px;
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.btn{
+  display:inline-block;
+  padding:15px 28px;
+  border-radius:999px;
+  font-weight:bold;
+  cursor:pointer;
+  border:1px solid var(--gold);
+  transition:.3s;
+}
+.btn.gold{
+  background:var(--gold);
+  color:#111;
+}
+.btn.dark{
+  background:rgba(0,0,0,.35);
+  color:white;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 35px rgba(212,175,55,.35);
+}
+
+section{
+  padding:90px 20px;
+}
+.container{
+  max-width:1200px;
+  margin:auto;
+}
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
+}
+.section-title h2{
+  color:var(--gold);
+  font-size:clamp(34px,6vw,55px);
+  margin-bottom:12px;
+}
+.section-title p{
+  color:#ccc;
+  font-size:18px;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  align-items:center;
+}
+.about-text{
+  background:linear-gradient(145deg,#070b18,#10162a);
+  padding:35px;
+  border-radius:25px;
+  border:1px solid rgba(212,175,55,.25);
+}
+.about-text p{
+  margin-bottom:18px;
+  color:#ddd;
+  line-height:1.7;
+}
+.about-img img{
+  height:520px;
+  width:100%;
+  object-fit:cover;
+  border-radius:25px;
+  filter:brightness(1.12) contrast(1.12) saturate(1.08);
+  border:1px solid rgba(212,175,55,.3);
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+}
+.card{
+  background:linear-gradient(145deg,#080d1b,#11162b);
+  padding:28px;
+  border-radius:22px;
+  border:1px solid rgba(212,175,55,.25);
+  text-align:center;
+}
+.card h3{
+  color:var(--gold);
+  font-size:24px;
+  margin-bottom:12px;
+}
+.card p{color:#ccc;line-height:1.6}
+.price{
+  font-size:46px;
+  color:var(--gold);
+  font-weight:900;
+  margin-top:15px;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:16px;
+}
+.gallery img{
+  width:100%;
+  height:310px;
+  object-fit:cover;
+  border-radius:20px;
+  filter:brightness(1.15) contrast(1.12) saturate(1.08);
+  transition:.35s;
+  border:1px solid rgba(212,175,55,.25);
+}
+.gallery img:hover{
+  transform:scale(1.03);
+  filter:brightness(1.25) contrast(1.18) saturate(1.15);
+}
+
+.menu-wrap{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:22px;
+}
+.menu-card{
+  background:linear-gradient(145deg,#07080f,#11172c);
+  border:1px solid rgba(212,175,55,.25);
+  border-radius:22px;
+  padding:24px;
+}
+.menu-card h3{
+  color:var(--gold);
+  font-size:24px;
+  margin-bottom:18px;
+}
+.item{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:9px 0;
+  border-bottom:1px dashed rgba(255,255,255,.13);
+  color:#eee;
+}
+.item span:last-child{
+  color:var(--gold);
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+.reservation{
+  background:
+    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.92)),
+    url("images/photo2.jpg") center/cover no-repeat;
+}
+form{
+  max-width:760px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  background:rgba(5,5,8,.85);
+  padding:30px;
+  border-radius:25px;
+  border:1px solid rgba(212,175,55,.35);
+}
+input,select,textarea{
+  width:100%;
+  padding:16px;
+  background:#0b1020;
+  color:white;
+  border:1px solid rgba(212,175,55,.45);
+  border-radius:14px;
+  font-size:16px;
+}
+textarea{
+  grid-column:1/3;
+  min-height:110px;
+}
+button{
+  grid-column:1/3;
+  border:none;
+  font-size:17px;
+}
+.contact-box{
+  text-align:center;
+  background:linear-gradient(145deg,#080d1b,#11162b);
+  border:1px solid rgba(212,175,55,.25);
+  padding:35px;
+  border-radius:25px;
+}
+.contact-box p{
+  margin:13px 0;
+  font-size:18px;
+  color:#ddd;
+}
+.map{
+  margin-top:25px;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(212,175,55,.3);
+}
+iframe{
+  width:100%;
+  height:350px;
+  border:0;
+}
+
+footer{
+  background:#000;
+  text-align:center;
+  padding:30px;
+  color:#aaa;
+  border-top:1px solid rgba(212,175,55,.25);
+}
+
+.lang{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.lang button{
+  grid-column:auto;
+  background:#111827;
+  color:white;
+  border:1px solid rgba(212,175,55,.4);
+  border-radius:999px;
+  padding:10px 14px;
+  cursor:pointer;
+}
+
+.whatsapp-float{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:9999;
+  background:#25D366;
+  color:white;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:800px){
+  .nav{
+    flex-direction:column;
+    gap:12px;
+  }
+  nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+  }
+  nav a{margin:0}
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+  form{
+    grid-template-columns:1fr;
+  }
+  textarea,button{
+    grid-column:1;
+  }
+  section{
+    padding:70px 16px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">GOLDEN LOUNGE BAR</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#menu">Menu</a>
+      <a href="#reservation">Reservation</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<a class="whatsapp-float" href="https://wa.me/393205631110" target="_blank">☏</a>
+
+<section class="hero" id="home">
+  <div class="hero-box">
+    <h1>Golden</h1>
+    <h2>Lounge Bar</h2>
+    <p>Luxury Lounge • Cocktails • Shisha • VIP Experience</p>
+    <p class="small">Via San Domenico 23 bis, Torino • Open 18:00 - 02:00</p>
+    <div class="btns">
+      <a class="btn gold" href="#reservation">Reserve Your Table</a>
+      <a class="btn dark" href="#menu">Explore Menu</a>
+    </div>
+    <div class="lang">
+      <button onclick="setLang('it')">Italiano</button>
+      <button onclick="setLang('en')">English</button>
+      <button onclick="setLang('fr')">Français</button>
+      <button onclick="setLang('ar')">العربية</button>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-title">
+      <h2 id="aboutTitle">Discover Golden</h2>
+      <p id="aboutSub">A premium lounge experience in the heart of Torino.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p><b>Italiano:</b> Benvenuti al Golden Lounge Bar, un ambiente esclusivo dove eleganza, comfort e qualità si incontrano.</p>
+        <p><b>English:</b> A premium destination for cocktails, shisha and unforgettable evenings in Torino.</p>
+        <p><b>Français:</b> Une expérience unique dans une ambiance raffinée au cœur de Turin.</p>
+        <p><b>العربية:</b> استمتع بأجواء راقية، شيشة فاخرة ومشروبات مميزة في قلب مدينة تورينو.</p>
+      </div>
+      <div class="about-img">
+        <img src="images/photo3.jpg" alt="Golden Lounge Interior">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>Premium Experience</h2>
+      <p>Everything you need for a luxury evening.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>💨 Premium Shisha</h3>
+        <p>Enjoy premium shisha in a stylish and comfortable lounge.</p>
+        <div class="price">€20</div>
+      </div>
+      <div class="card">
+        <h3>🍸 Cocktails</h3>
+        <p>Signature cocktails, classics and international drinks.</p>
+      </div>
+      <div class="card">
+        <h3>🍾 Champagne</h3>
+        <p>Moët & Chandon and premium bottles for your special nights.</p>
+      </div>
+      <div class="card">
+        <h3>🌙 VIP Atmosphere</h3>
+        <p>Elegant interior, terrace, music and a unique night mood.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="section-title">
+      <h2>Gallery</h2>
+      <p>Luxury interior, terrace and night atmosphere.</p>
+    </div>
+
+    <div class="gallery">
+      <img src="images/photo1.jpg" alt="Golden Lounge">
+      <img src="images/photo2.jpg" alt="Golden Lounge">
+      <img src="images/photo3.jpg" alt="Golden Lounge">
+      <img src="images/photo4.jpg" alt="Golden Lounge">
+      <img src="images/photo5.jpg" alt="Golden Lounge">
+      <img src="images/photo6.jpg" alt="Golden Lounge">
+      <img src="images/photo7.jpg" alt="Golden Lounge">
+      <img src="images/photo8.jpg" alt="Golden Lounge">
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="container">
+    <div class="section-title">
+      <h2>Premium Menu</h2>
+      <p>Cocktails, spirits, wines, soft drinks, coffee and shisha.</p>
+    </div>
+
+    <div class="menu-wrap">
+
+      <div class="menu-card">
+        <h3>Signature Cocktails</h3>
+        <div class="item"><span>Golden Spritz</span><span>€10</span></div>
+        <div class="item"><span>Giardino di Kios</span><span>€12</span></div>
+        <div class="item"><span>Spicy Mule</span><span>€12</span></div>
+        <div class="item"><span>Hazelnut Smash</span><span>€12</span></div>
+        <div class="item"><span>Contadino</span><span>€12</span></div>
+        <div class="item"><span>Il Curativo</span><span>€12</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>International Cocktails</h3>
+        <div class="item"><span>Bloody Mary</span><span>€8</span></div>
+        <div class="item"><span>Manhattan</span><span>€10</span></div>
+        <div class="item"><span>Martini Cocktail</span><span>€10</span></div>
+        <div class="item"><span>Penicillin</span><span>€10</span></div>
+        <div class="item"><span>Gin Fizz</span><span>€8</span></div>
+        <div class="item"><span>Paloma</span><span>€8</span></div>
+        <div class="item"><span>Old Fashioned</span><span>€8</span></div>
+        <div class="item"><span>Naked and Famous</span><span>€8</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Analcolici</h3>
+        <div class="item"><span>Alcol Free Tea</span><span>€8</span></div>
+        <div class="item"><span>Dry Golden</span><span>€8</span></div>
+        <div class="item"><span>Sweet Golden</span><span>€8</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Vodka</h3>
+        <div class="item"><span>Belvedere</span><span>€8</span></div>
+        <div class="item"><span>Grey Goose</span><span>€8</span></div>
+        <div class="item"><span>Absolut</span><span>€6</span></div>
+        <div class="item"><span>Smirnoff</span><span>€6</span></div>
+        <div class="item"><span>Chopin</span><span>€6</span></div>
+        <div class="item"><span>Sky</span><span>€6</span></div>
+        <div class="item"><span>Ciroc</span><span>€6</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Whiskey</h3>
+        <div class="item"><span>Oban</span><span>€9</span></div>
+        <div class="item"><span>Talisker</span><span>€9</span></div>
+        <div class="item"><span>Laphroaig</span><span>€8</span></div>
+        <div class="item"><span>Daniel's Honey</span><span>€7</span></div>
+        <div class="item"><span>Bulleit Bourbon</span><span>€7</span></div>
+        <div class="item"><span>Bulleit Rye</span><span>€7</span></div>
+        <div class="item"><span>Jim Beam</span><span>€6</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Gin</h3>
+        <div class="item"><span>Gin Mare</span><span>-</span></div>
+        <div class="item"><span>Hendrick's</span><span>-</span></div>
+        <div class="item"><span>Tanqueray</span><span>-</span></div>
+        <div class="item"><span>Malfy</span><span>-</span></div>
+        <div class="item"><span>Malfy Pompelmo</span><span>-</span></div>
+        <div class="item"><span>Malfy Limone</span><span>-</span></div>
+        <div class="item"><span>Plymouth</span><span>-</span></div>
+        <div class="item"><span>Bombay</span><span>-</span></div>
+        <div class="item"><span>Martin Miller</span><span>-</span></div>
+        <div class="item"><span>Porto Bello Road</span><span>-</span></div>
+        <div class="item"><span>Elephant</span><span>-</span></div>
+        <div class="item"><span>Nordes</span><span>-</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Rum</h3>
+        <div class="item"><span>Diplomatico</span><span>€10</span></div>
+        <div class="item"><span>Zacapa</span><span>€10</span></div>
+        <div class="item"><span>Clairin Communal</span><span>€8</span></div>
+        <div class="item"><span>Pampero Blanco</span><span>€7</span></div>
+        <div class="item"><span>Pampero Especial</span><span>€7</span></div>
+        <div class="item"><span>Myers Dark Rum</span><span>€8</span></div>
+        <div class="item"><span>Plantation Pineapple</span><span>€8</span></div>
+        <div class="item"><span>Havana Club</span><span>€7</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Tequila / Mezcal</h3>
+        <div class="item"><span>Espolon</span><span>€8</span></div>
+        <div class="item"><span>Alipus</span><span>€8</span></div>
+        <div class="item"><span>Patron</span><span>€8</span></div>
+        <div class="item"><span>Montelobos</span><span>€8</span></div>
+        <div class="item"><span>Roster Rojo</span><span>€8</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Amari</h3>
+        <div class="item"><span>Fernet Branca</span><span>€5</span></div>
+        <div class="item"><span>Branca Menta</span><span>€5</span></div>
+        <div class="item"><span>Montenegro</span><span>€5</span></div>
+        <div class="item"><span>Amaro del Capo</span><span>€5</span></div>
+        <div class="item"><span>San Simone</span><span>€5</span></div>
+        <div class="item"><span>Sambuca</span><span>€5</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Vini Bianchi</h3>
+        <div class="item"><span>Gewurztraminer</span><span>€5 / €25</span></div>
+        <div class="item"><span>Arneis</span><span>€5 / €20</span></div>
+        <div class="item"><span>Falanghina</span><span>€5 / €20</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Vini Rossi</h3>
+        <div class="item"><span>Barbera</span><span>€5 / €25</span></div>
+        <div class="item"><span>Dolcetto</span><span>€5 / €20</span></div>
+        <div class="item"><span>Nero d'Avola</span><span>€5 / €20</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Bollicine</h3>
+        <div class="item"><span>Prosecco</span><span>€6 / €30</span></div>
+        <div class="item"><span>Cuvée Mellisimato</span><span>€6 / €30</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Champagne</h3>
+        <div class="item"><span>Moet & Chandon Imperial</span><span>€90</span></div>
+        <div class="item"><span>Moet & Chandon Ice Imperial</span><span>€110</span></div>
+        <div class="item"><span>Moet & Chandon Ice Rosé</span><span>€110</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Birre</h3>
+        <div class="item"><span>Corona</span><span>€5</span></div>
+        <div class="item"><span>Heineken</span><span>€5</span></div>
+        <div class="item"><span>Beck's</span><span>€5</span></div>
+        <div class="item"><span>Bruxelles Blanche</span><span>€6</span></div>
+        <div class="item"><span>Brewdog Punk IPA</span><span>€6</span></div>
+        <div class="item"><span>Ceres</span><span>€6</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Bevande</h3>
+        <div class="item"><span>Coca Cola</span><span>€5</span></div>
+        <div class="item"><span>Coca Cola Zero</span><span>€5</span></div>
+        <div class="item"><span>Fanta</span><span>€5</span></div>
+        <div class="item"><span>Sprite</span><span>€5</span></div>
+        <div class="item"><span>Estathé</span><span>€5</span></div>
+        <div class="item"><span>Red Bull</span><span>€5</span></div>
+        <div class="item"><span>Ginger Beer</span><span>€5</span></div>
+        <div class="item"><span>Acqua Naturale</span><span>€2</span></div>
+        <div class="item"><span>Acqua Frizzante</span><span>€2</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Caffetteria</h3>
+        <div class="item"><span>Caffè</span><span>€2</span></div>
+        <div class="item"><span>Caffè Corretto</span><span>€3</span></div>
+        <div class="item"><span>Tè con la menta x1</span><span>€5</span></div>
+        <div class="item"><span>Tè con la menta x2</span><span>€10</span></div>
+      </div>
+
+      <div class="menu-card">
+        <h3>Shisha</h3>
+        <div class="item"><span>Premium Shisha</span><span>€20</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="reservation" id="reservation">
+  <div class="container">
+    <div class="section-title">
+      <h2>VIP Reservation</h2>
+      <p>Book your table directly through WhatsApp.</p>
+    </div>
+
+    <form onsubmit="sendWhatsApp(event)">
+      <input id="name" placeholder="Full Name / Nom / Nome / الاسم" required>
+      <input id="phone" placeholder="Phone / Téléphone / Telefono / الهاتف" required>
+      <input id="date" type="date" required>
+      <input id="time" type="time" required>
+      <input id="guests" type="number" min="1" placeholder="Number of guests" required>
+      <select id="shisha">
+        <option value="Yes">Shisha: Yes</option>
+        <option value="No">Shisha: No</option>
+      </select>
+      <textarea id="message" placeholder="Special request / Message"></textarea>
+      <button class="btn gold" type="submit">Send Reservation on WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-title">
+      <h2>Contact</h2>
+      <p>Visit us in Torino.</p>
+    </div>
+
+    <div class="contact-box">
+      <p>📍 Via San Domenico 23 bis, Torino</p>
+      <p>📱 WhatsApp: +39 320 563 1110</p>
+      <p>📸 Instagram: @goldenloungebar</p>
+      <p>🕕 Open Daily: 18:00 - 02:00</p>
+      <div class="btns">
+        <a class="btn gold" href="https://wa.me/393205631110" target="_blank">WhatsApp</a>
+        <a class="btn dark" href="https://www.instagram.com/goldenloungebar" target="_blank">Instagram</a>
+      </div>
+
+      <div class="map">
+        <iframe src="https://www.google.com/maps?q=Via%20San%20Domenico%2023%20bis%20Torino&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Golden Lounge Bar - Torino | Luxury Lounge • Cocktails • Shisha
+</footer>
+
+<script>
+function sendWhatsApp(e){
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
+  const guests = document.getElementById("guests").value;
+  const shisha = document.getElementById("shisha").value;
+  const message = document.getElementById("message").value;
+
+  const text =
+`New Reservation - Golden Lounge Bar
+
+Name: ${name}
+Phone: ${phone}
+Date: ${date}
+Time: ${time}
+Guests: ${guests}
+Shisha: ${shisha}
+Message: ${message}`;
+
+  const url = "https://wa.me/393205631110?text=" + encodeURIComponent(text);
+  window.open(url, "_blank");
+}
+
+function setLang(lang){
+  const aboutTitle = document.getElementById("aboutTitle");
+  const aboutSub = document.getElementById("aboutSub");
+
+  if(lang === "it"){
+    aboutTitle.innerText = "Scopri Golden";
+    aboutSub.innerText = "Un'esperienza lounge premium nel cuore di Torino.";
+  }
+  if(lang === "en"){
+    aboutTitle.innerText = "Discover Golden";
+    aboutSub.innerText = "A premium lounge experience in the heart of Torino.";
+  }
+  if(lang === "fr"){
+    aboutTitle.innerText = "Découvrez Golden";
+    aboutSub.innerText = "Une expérience lounge premium au cœur de Turin.";
+  }
+  if(lang === "ar"){
+    aboutTitle.innerText = "اكتشف Golden";
+    aboutSub.innerText = "تجربة لاونج فاخرة في قلب مدينة تورينو.";
+  }
+}
+</script>
+
+</body>
+</html>
